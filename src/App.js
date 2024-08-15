@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./scss/app.scss";
 import Header from "./components-pizza/header/Header";
 import Categories from "./components-pizza/categories/Categories";
 import Sort from "./components-pizza/sort/Sort";
 import PizzaBlock from "./components-pizza/pizza/PizzaBlock";
-import pizzas from "./assets/pizzas.json";
 
 function App() {
+  const [pizzas, setPizzas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("https://66bdfe8274dfc195586e41a6.mockapi.io/items")
+      .then((response) => response.json())
+      .then((data) => {
+        setPizzas(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching pizza data:", error);
+        setIsLoading(false);
+      });
+  }, []);
+
   return (
     <div className="wrapper">
       <Header />
