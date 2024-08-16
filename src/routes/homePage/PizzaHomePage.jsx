@@ -11,9 +11,7 @@ function PizzaHomePage() {
   const [sortType, setSortType] = useState(0);
 
   useEffect(() => {
-    fetch(
-      "https://66bdfe8274dfc195586e41a6.mockapi.io/items?category=" + categoryId
-    )
+    fetch("https://66bdfe8274dfc195586e41a6.mockapi.io/items")
       .then((response) => response.json())
       .then((data) => {
         setPizzas(data);
