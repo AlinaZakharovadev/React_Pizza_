@@ -65,7 +65,9 @@ function PizzaHomePage() {
           }}
         />
       </div>
-      <h2 className="content__title">Все пиццы</h2>
+      <div>
+        <h2 className="content__title"></h2>
+      </div>
       <div className="content__items">
         {isLoading ? (
           <p>Идет Загрузка...</p>
