@@ -1,26 +1,35 @@
 import React from "react";
-import "../src/scss/app.scss";
+import "./scss/app.scss";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./scss/app.scss";
-import Header from "./components-pizza/header/Header";
 import PizzaHomePage from "./routes/homePage/PizzaHomePage";
+import NotFound from "./routes/notfound/NotFound";
+import Layout from "./components-pizza/layout/Layout";
+import CartPage from "./routes/cart/CartPage";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <PizzaHomePage />,
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <PizzaHomePage />,
+        },
+        {
+          path: "*",
+          element: <NotFound />,
+        },
+        {
+          path: "/cart",
+          element: <CartPage />,
+        },
+      ],
     },
-    // Add more
   ]);
 
-  return (
-    <div className="wrapper">
-      <Header />
-      <RouterProvider router={router} />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
