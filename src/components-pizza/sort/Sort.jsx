@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { setSort } from "../../redux/slices/filterSlice";
 
 function Sort({ sortType, sortOrder, onSortChange }) {
+  const dispatch = useDispatch();
+
   const handleSortChange = (event) => {
     const { name, value } = event.target;
-    onSortChange(
-      name === "sortBy" ? value : sortType,
-      name === "order" ? value : sortOrder
-    );
+    const newSortType = name === "sortBy" ? value : sortType;
+    const newSortOrder = name === "order" ? value : sortOrder;
+    dispatch(setSort({ sortProperty: newSortType, order: newSortOrder }));
+    onSortChange(newSortType, newSortOrder);
   };
 
   return (

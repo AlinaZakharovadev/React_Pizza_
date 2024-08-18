@@ -1,19 +1,27 @@
 import React, { useEffect, useState, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "../../scss/app.scss";
 import Categories from "../../components-pizza/categories/Categories";
 import Sort from "../../components-pizza/sort/Sort";
 import PizzaBlock from "../../components-pizza/pizza/PizzaBlock";
 import Pagination from "../../components-pizza/pagination/Pagination";
+import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
 
 function PizzaHomePage() {
+  const dispatch = useDispatch();
+  const categoryId = useSelector((state) => state.filters.categoryId);
+  const currentPage = useSelector((state) => state.filters.currentPage);
+
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [categoryId, setCategoryId] = useState(0);
   const [sortType, setSortType] = useState("title");
   const [sortOrder, setSortOrder] = useState("asc");
-  const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 8;
   const totalPages = 3;
+
+  const onClickCategory = (id) => {
+    dispatch(setCategoryId(id));
+  };
 
   const getUrlWithParams = useCallback(() => {
     const url = new URL("https://66bdfe8274dfc195586e41a6.mockapi.io/items");
@@ -52,10 +60,7 @@ function PizzaHomePage() {
   return (
     <div>
       <div className="content__top">
-        <Categories
-          value={categoryId}
-          onClickCategory={(i) => setCategoryId(i)}
-        />
+        <Categories value={categoryId} onClickCategory={onClickCategory} />
         <Sort
           sortType={sortType}
           sortOrder={sortOrder}
@@ -78,7 +83,7 @@ function PizzaHomePage() {
       <div className="content pagination">
         <Pagination
           pageCount={totalPages}
-          onPageChange={({ selected }) => setCurrentPage(selected)}
+          onPageChange={({ selected }) => dispatch(setCurrentPage(selected))}
         />
       </div>
     </div>
