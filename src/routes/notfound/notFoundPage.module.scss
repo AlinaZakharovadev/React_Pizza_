@@ -1,7 +1,12 @@
 .root {
-  padding: 50px;
-  text-align: center;
+  display: flex;
+  min-height: 75vh;
+  justify-content: center;
+  align-items: center;
 
+  .main {
+    text-align: center;
+  }
   span {
     font-size: 100px;
   }

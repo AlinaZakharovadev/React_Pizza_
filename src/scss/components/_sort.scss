@@ -1,25 +1,21 @@
-@import "../variables";
-
 .sort {
   position: relative;
 
   &__label {
     display: flex;
     align-items: center;
-
-    // svg {
-    //   margin-right: 8px;
-    // }
+    cursor: pointer;
+    color: $black;
 
     b {
       margin-right: 8px;
     }
 
-    // span {
-    //   color: $orange;
-    //   border-bottom: 1px dashed $orange;
-    //   cursor: pointer;
-    // }
+    .sort__arrow {
+      margin-left: 8px;
+      font-size: 14px;
+      color: $orange;
+    }
   }
 
   &__popup {
@@ -27,17 +23,22 @@
     right: 0;
     margin-top: 3px;
     margin-bottom: 15px;
-    background: #ffffff;
+    background: $white;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
     border-radius: 10px;
     overflow: hidden;
     padding: 5px;
     width: 160px;
+    z-index: 10;
 
     select {
       border: none;
       padding: 5px;
       font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      background: $white;
+      color: $black;
     }
   }
 }

@@ -11,7 +11,7 @@
     }
 
     li {
-      background-color: #f9f9f9;
+      background-color: $categories;
       padding: 13px 30px;
       border-radius: 30px;
       margin-right: 10px;
@@ -21,16 +21,16 @@
       @include noselect();
 
       &:hover {
-        background-color: darken(#f9f9f9, 2%);
+        background-color: darken($categories, 2%);
       }
 
       &:active {
-        background-color: darken(#f9f9f9, 5%);
+        background-color: darken($categories, 5%);
       }
 
       &.active {
-        background-color: #282828;
-        color: #fff;
+        background-color: $categories-black;
+        color: $white;
       }
     }
   }
