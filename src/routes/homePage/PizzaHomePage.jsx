@@ -6,6 +6,7 @@ import Sort from "../../components-pizza/sort/Sort";
 import PizzaBlock from "../../components-pizza/pizza/PizzaBlock";
 import Pagination from "../../components-pizza/pagination/Pagination";
 import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
+import Skeleton from "../../components-pizza/pizza/Skeleton";
 
 function PizzaHomePage() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function PizzaHomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [sortType, setSortType] = useState("title");
   const [sortOrder, setSortOrder] = useState("asc");
-  const itemsPerPage = 8;
+  const itemsPerPage = 4;
   const totalPages = 3;
 
   const onClickCategory = (id) => {
@@ -74,11 +75,11 @@ function PizzaHomePage() {
         <h2 className="content__title"></h2>
       </div>
       <div className="content__items">
-        {isLoading ? (
-          <p>Идет Загрузка...</p>
-        ) : (
-          filteredPizzas.map((obj) => <PizzaBlock key={obj.id} {...obj} />)
-        )}
+        {isLoading
+          ? Array.from({ length: itemsPerPage }).map((_, index) => (
+              <Skeleton key={index} />
+            ))
+          : filteredPizzas.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
       </div>
       <div className="content pagination">
         <Pagination
