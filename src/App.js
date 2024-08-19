@@ -1,6 +1,5 @@
 import React from "react";
 import "./scss/app.scss";
-import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PizzaHomePage from "./routes/homePage/PizzaHomePage";
 import NotFound from "./routes/notfound/NotFound";
