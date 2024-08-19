@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
 
 function Sort({ sortType, sortOrder, onSortChange }) {
+  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
   const handleSortChange = (event) => {
@@ -13,21 +14,28 @@ function Sort({ sortType, sortOrder, onSortChange }) {
     onSortChange(newSortType, newSortOrder);
   };
 
+  const togglePopup = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <div className="sort">
-      <div className="sort__label">
+      <div className="sort__label" onClick={togglePopup}>
         <b>Сортировка по:</b>
+        <span className="sort__arrow">{isOpen ? "▲" : "▼"}</span>
       </div>
-      <div className="sort__popup">
-        <select name="sortBy" value={sortType} onChange={handleSortChange}>
-          <option value="title">названию</option>
-          <option value="price">цене</option>
-        </select>
-        <select name="order" value={sortOrder} onChange={handleSortChange}>
-          <option value="asc">возрастанию</option>
-          <option value="desc">убыванию</option>
-        </select>
-      </div>
+      {isOpen && (
+        <div className="sort__popup">
+          <select name="sortBy" value={sortType} onChange={handleSortChange}>
+            <option value="title">названию</option>
+            <option value="price">цене</option>
+          </select>
+          <select name="order" value={sortOrder} onChange={handleSortChange}>
+            <option value="asc">возрастанию</option>
+            <option value="desc">убыванию</option>
+          </select>
+        </div>
+      )}
     </div>
   );
 }
