@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../../components-pizza/cartItem/CartItem";
 import { clearItem } from "../../redux/slices/cartSlice";
+import CartEmpty from "../../components-pizza/cartEmpty/CartEmpty";
 
 function CartPage({ id }) {
   const dispatch = useDispatch();
@@ -17,6 +18,10 @@ function CartPage({ id }) {
   const onClickDeleteAll = () => {
     dispatch(clearItem(id));
   };
+
+  if (!totalPriceB) {
+    return <CartEmpty />;
+  }
 
   return (
     <div className="content">
