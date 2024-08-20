@@ -7,13 +7,14 @@ import PizzaBlock from "../../components-pizza/pizza/PizzaBlock";
 import Pagination from "../../components-pizza/pagination/Pagination";
 import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
 import Skeleton from "../../components-pizza/pizza/Skeleton";
+import { setItems } from "../../redux/slices/pizzasSlice";
 
 function PizzaHomePage() {
   const dispatch = useDispatch();
   const categoryId = useSelector((state) => state.filters.categoryId);
   const currentPage = useSelector((state) => state.filters.currentPage);
+  const items = useSelector((state) => state.pizzas.items);
 
-  const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortType, setSortType] = useState("title");
   const [sortOrder, setSortOrder] = useState("asc");
@@ -40,7 +41,7 @@ function PizzaHomePage() {
         const response = await fetch(getUrlWithParams());
         if (response.ok) {
           const data = await response.json();
-          setPizzas(data);
+          dispatch(setItems(data));
         } else {
           console.error("Error fetching pizza data");
         }
@@ -52,9 +53,9 @@ function PizzaHomePage() {
     };
 
     fetchPizzas();
-  }, [getUrlWithParams]);
+  }, [getUrlWithParams, dispatch]);
 
-  const filteredPizzas = pizzas.filter(
+  const filteredPizzas = items.filter(
     (pizza) => categoryId === 0 || pizza.category === categoryId
   );
 
