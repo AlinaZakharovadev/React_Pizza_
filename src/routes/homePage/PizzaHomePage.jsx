@@ -7,15 +7,15 @@ import PizzaBlock from "../../components-pizza/pizza/PizzaBlock";
 import Pagination from "../../components-pizza/pagination/Pagination";
 import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
 import Skeleton from "../../components-pizza/pizza/Skeleton";
-import { setItems } from "../../redux/slices/pizzasSlice";
+import { fetchPizzas } from "../../redux/slices/pizzasSlice";
 
 function PizzaHomePage() {
   const dispatch = useDispatch();
   const categoryId = useSelector((state) => state.filters.categoryId);
   const currentPage = useSelector((state) => state.filters.currentPage);
   const items = useSelector((state) => state.pizzas.items);
+  const pizzaStatus = useSelector((state) => state.pizzas.status);
 
-  const [isLoading, setIsLoading] = useState(true);
   const [sortType, setSortType] = useState("title");
   const [sortOrder, setSortOrder] = useState("asc");
   const itemsPerPage = 4;
@@ -35,24 +35,8 @@ function PizzaHomePage() {
   }, [sortType, sortOrder, currentPage]);
 
   useEffect(() => {
-    const fetchPizzas = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(getUrlWithParams());
-        if (response.ok) {
-          const data = await response.json();
-          dispatch(setItems(data));
-        } else {
-          console.error("Error fetching pizza data");
-        }
-      } catch (error) {
-        console.error("Error fetching pizza data:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchPizzas();
+    const url = getUrlWithParams();
+    dispatch(fetchPizzas(url));
   }, [getUrlWithParams, dispatch]);
 
   const filteredPizzas = items.filter(
@@ -76,7 +60,7 @@ function PizzaHomePage() {
         <h2 className="content__title"></h2>
       </div>
       <div className="content__items">
-        {isLoading
+        {pizzaStatus === "loading"
           ? Array.from({ length: itemsPerPage }).map((_, index) => (
               <Skeleton key={index} />
             ))
