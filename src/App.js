@@ -5,6 +5,7 @@ import PizzaHomePage from "./routes/homePage/PizzaHomePage";
 import NotFound from "./routes/notfound/NotFound";
 import Layout from "./components-pizza/layout/Layout";
 import CartPage from "./routes/cart/CartPage";
+import PizzaItemPage from "./routes/pizzaItemPage/PizzaItemPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ function App() {
         {
           path: "/cart",
           element: <CartPage />,
+        },
+        {
+          path: "/pizza/:id",
+          element: <PizzaItemPage />,
         },
       ],
     },
