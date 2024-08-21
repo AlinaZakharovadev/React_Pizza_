@@ -60,11 +60,18 @@ function PizzaHomePage() {
         <h2 className="content__title"></h2>
       </div>
       <div className="content__items">
-        {pizzaStatus === "loading"
-          ? Array.from({ length: itemsPerPage }).map((_, index) => (
-              <Skeleton key={index} />
-            ))
-          : filteredPizzas.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
+        {pizzaStatus === "loading" ? (
+          Array.from({ length: itemsPerPage }).map((_, index) => (
+            <Skeleton key={index} />
+          ))
+        ) : pizzaStatus === "failed" ? (
+          <div className="error__message">
+            Произошла ошибка😢 <br />
+            Повторите попытку снова🍕
+          </div>
+        ) : (
+          filteredPizzas.map((obj) => <PizzaBlock key={obj.id} {...obj} />)
+        )}
       </div>
       <div className="content pagination">
         <Pagination
