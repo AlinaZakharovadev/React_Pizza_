@@ -2,12 +2,16 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchPizzas = createAsyncThunk(
   "pizzas/fetchPizzas",
-  async (url) => {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("Failed to fetch pizzas");
+  async (url, { rejectWithValue }) => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        return rejectWithValue("Failed to fetch pizzas");
+      }
+      return await response.json();
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
-    return await response.json();
   }
 );
 
