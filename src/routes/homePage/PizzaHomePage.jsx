@@ -56,9 +56,7 @@ function PizzaHomePage() {
           }}
         />
       </div>
-      <div>
-        <h2 className="content__title"></h2>
-      </div>
+      <div className="content__title"></div>
       <div className="content__items">
         {pizzaStatus === "loading" ? (
           Array.from({ length: itemsPerPage }).map((_, index) => (

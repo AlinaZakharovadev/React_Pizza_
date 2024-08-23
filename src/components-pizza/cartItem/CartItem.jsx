@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addItem, removeItem, deleteItem } from "../../redux/slices/cartSlice";
 
 function CartItem({ id, title, price, count, imageUrl, size, type }) {
