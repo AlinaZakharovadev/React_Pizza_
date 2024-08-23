@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./pizzaItemPage.module.scss";
+import { Link } from "react-router-dom";
 
 function PizzaItemPage() {
   const { id } = useParams();
@@ -36,7 +37,6 @@ function PizzaItemPage() {
   if (error) {
     return <div>Error: {error}</div>;
   }
-
   return (
     <div className={styles.container}>
       <div className={styles.mainContent}>
@@ -47,17 +47,14 @@ function PizzaItemPage() {
         <div className={styles.desc}>
           <div className={styles.main}>
             <p>
-              Price: <strong>{pizza.price}₽</strong>
+              Цена: <strong>{pizza.price}₽</strong>
             </p>
             <p>
-              Rating: <strong>{pizza.rating} / 5</strong>
-            </p>
-            <p>
-              Category: <strong>{pizza.category}</strong>
+              Рейтинг: <strong>{pizza.rating} / 10</strong>
             </p>
           </div>
           <div className={styles.info}>
-            <h3>Sizes:</h3>
+            <h3>Размеры:</h3>
             <ul>
               {pizza.sizes.map((size, index) => (
                 <li key={index}>{size} cm</li>
@@ -65,12 +62,17 @@ function PizzaItemPage() {
             </ul>
           </div>
           <div className={styles.type}>
-            <h3>Types:</h3>
+            <h3>Тесто:</h3>
             <ul>
               {pizza.types.map((type, index) => (
-                <li key={index}>{type === 0 ? "Thin" : "Thick"}</li>
+                <li key={index}>{type === 0 ? "Тонкое" : "Традиционное"}</li>
               ))}
             </ul>
+          </div>
+          <div className={styles.btn_main}>
+            <Link to="/" className={styles.btn}>
+              <span>Вернуться назад</span>
+            </Link>
           </div>
         </div>
       </div>
