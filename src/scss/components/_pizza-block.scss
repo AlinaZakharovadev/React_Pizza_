@@ -10,6 +10,10 @@
   text-align: center;
   margin-bottom: 65px;
 
+  @media (max-width: 730px) {
+    width: auto;
+  }
+
   &__wrapper {
     display: flex;
     justify-content: center;
