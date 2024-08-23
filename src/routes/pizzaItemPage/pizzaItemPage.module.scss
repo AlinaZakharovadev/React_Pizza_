@@ -4,14 +4,8 @@
   border-radius: 10px;
   max-width: 1000px;
 
-  @media (max-width: 680px) {
-    width: calc(100vw - 30px);
-    margin-top: 15px;
-  }
-
-  @media (max-width: 370px) {
-    width: calc(100vw - 25px);
-    margin-top: 12px;
+  @media (max-width: 646px) {
+    height: auto;
   }
 }
 
@@ -21,6 +15,15 @@
   gap: 20px;
   align-items: center;
   width: 100%;
+
+  @media (max-width: 740px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 646px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2;
+  }
 }
 
 .imageText {
@@ -72,12 +75,47 @@
 
 p {
   font-size: 22px;
+
+  @media (max-width: 740px) {
+    font-size: 18px;
+  }
 }
 
 h3 {
-  font-size: 22px;
+  font-size: 20px;
+  @media (max-width: 740px) {
+    font-size: 18px;
+  }
+}
+
+h1 {
+  font-size: 34px;
+
+  @media (max-width: 740px) {
+    font-size: 28px;
+  }
 }
 
 ul {
   font-size: 18px;
+  @media (max-width: 740px) {
+    font-size: 16px;
+  }
+}
+
+.btn_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  padding: 15px;
+  padding-inline: 25px;
+  background-color: #fe5f1e;
+  border-radius: 28px;
+}
+span {
+  color: #ffffff;
+  font-weight: 700;
 }
