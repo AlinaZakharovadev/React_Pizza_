@@ -8,7 +8,6 @@ import Pagination from "../../components-pizza/pagination/Pagination";
 import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
 import Skeleton from "../../components-pizza/pizza/Skeleton";
 import { fetchPizzas } from "../../redux/slices/pizzasSlice";
-import { Link } from "react-router-dom";
 
 function PizzaHomePage() {
   const dispatch = useDispatch();
@@ -71,11 +70,7 @@ function PizzaHomePage() {
             Повторите попытку снова🍕
           </div>
         ) : (
-          filteredPizzas.map((obj) => (
-            <Link to={`/pizza/${obj.id}`} key={obj.id}>
-              <PizzaBlock {...obj} />
-            </Link>
-          ))
+          filteredPizzas.map((obj) => <PizzaBlock key={obj.id} {...obj} />)
         )}
       </div>
       <div className="content pagination">
