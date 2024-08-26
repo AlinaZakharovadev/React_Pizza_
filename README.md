@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# 🍕 Pizza Online Store - React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the **Pizza Online Store** project! This is a web application built using **React** to provide users with a smooth and responsive online pizza ordering experience. The app features a modern UI, robust state management, and efficient navigation, allowing users to browse and order their favorite pizzas effortlessly.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Browse Pizzas**: View a wide variety of pizzas with pizza dough variations and prices.
+- **Filter & Sort**: Easily filter and sort pizzas by categories, sorting by ascending and descending prices, alphabetically
+- **Add to Cart**: Seamlessly add pizzas to your cart and view your order summary, change it if you need.
+- **Responsive Design**: Fully responsive UI that looks great on all devices.
 
-### `npm start`
+## 🛠 Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **ReactJS 18**: The foundation of the app, providing a component-based architecture.
+- **Redux Toolkit**: Efficient state management for storing pizza data and handling global state.
+- **React Router v6**: Provides seamless navigation throughout the app.
+- **Fetch API**: Used for sending requests to the backend and fetching pizza data.
+- **React Hooks**: Utilized for state and lifecycle management.
+- **Prettier**: Ensures consistent code formatting across the project.
+- **CSS-Modules / SCSS**: Modular and maintainable styling.
+- **React Content Loader**: Displays skeletons while data is loading.
+- **React Pagination**: Implements pagination for large sets of pizza data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
