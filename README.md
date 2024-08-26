@@ -4,9 +4,9 @@ Welcome to the **Pizza Online Store** project! This is a web application built u
 
 ## 🚀 Features
 
-- **Browse Pizzas**: View a wide variety of pizzas with pizza dough variations and prices.
+- **Browse Pizzas**: Explore a diverse selection of pizzas with various dough options and prices.
 - **Filter & Sort**: Easily filter and sort pizzas by categories, sorting by ascending and descending prices, alphabetically
-- **Add to Cart**: Seamlessly add pizzas to your cart and view your order summary, change it if you need.
+- **Add to Cart**: Effortlessly add pizzas to your cart, review your order summary, and make changes as needed.
 - **Responsive Design**: Fully responsive UI that looks great on all devices.
 
 ## 🛠 Technologies Used
