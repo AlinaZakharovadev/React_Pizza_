@@ -101,7 +101,7 @@ function CartPage({ id }) {
               <span>Очистить корзину</span>
             </div>
           </div>
-          <div className="content__items">
+          <div className="content__items__cart">
             {items.map((item) => (
               <CartItem key={item.id} {...item} />
             ))}

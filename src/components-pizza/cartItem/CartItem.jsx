@@ -24,13 +24,7 @@ function CartItem({ id, title, price, count, imageUrl, size, type }) {
   return (
     <div className="cart__item">
       <div className="cart__item-img">
-        <img
-          className="pizza-block__image"
-          src={imageUrl}
-          alt={title}
-          width="80"
-          height="80"
-        />
+        <img src={imageUrl} alt={title} width="80" height="80" />
       </div>
       <div className="cart__item-info">
         <h3>{title}</h3>
