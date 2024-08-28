@@ -34,7 +34,13 @@ function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
   return (
     <div className="pizza-block">
       <Link to={`/pizza/${id}`} key={id}>
-        <img className="pizza-block__image" src={imageUrl} alt={title} />
+        <img
+          className="pizza-block__image"
+          src={imageUrl}
+          alt={title}
+          width="260"
+          height="260"
+        />
       </Link>
       <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
