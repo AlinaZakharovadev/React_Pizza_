@@ -11,22 +11,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/, // Применение к файлам .js и .jsx
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"], // Пресеты для Babel
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
       {
-        test: /\.scss$/, // Применение к файлам .scss
-        use: [
-          MiniCssExtractPlugin.loader, // Извлечение CSS в отдельный файл
-          "css-loader", // Преобразование CSS в модули
-          "sass-loader", // Преобразование SCSS в CSS
-        ],
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|jpg|gif|jpeg|svg)$/,
@@ -40,29 +36,29 @@ module.exports = {
         ],
       },
       {
-        test: /\.txt$/, // Применение к файлам .txt
-        use: "raw-loader", // Использование raw-loader для преобразования .txt файлов
+        test: /\.txt$/,
+        use: "raw-loader",
       },
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"], // Расширения файлов, которые Webpack должен обрабатывать
+    extensions: [".js", ".jsx"],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html", // Шаблон HTML
+      template: "./public/index.html",
     }),
     new MiniCssExtractPlugin({
-      filename: "styles.css", // Имя выходного CSS файла
+      filename: "styles.css",
     }),
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, "public"), // Папка для обслуживания статических файлов
+      directory: path.join(__dirname, "public"),
     },
     compress: true,
     port: 3000,
-    hot: true, // Поддержка горячей перезагрузки
-    historyApiFallback: true, // Поддержка History API (для React Router)
+    hot: true,
+    historyApiFallback: true,
   },
 };
