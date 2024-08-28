@@ -10,21 +10,28 @@
     justify-content: space-between;
     flex-wrap: wrap;
 
-    @media (max-width: 640px) {
+    @media (max-width: 760px) {
       gap: 10px;
       justify-content: center;
+    }
+
+    @media (max-width: 420px) {
+      gap: 8px;
     }
   }
 
   &__logo {
     display: flex;
 
-    @media (max-width: 640px) {
-      justify-content: center;
-    }
-
     img {
       margin-right: 15px;
+
+      @media (max-width: 420px) {
+        margin-right: 10px;
+        width: 35px;
+        height: 35px;
+        align-self: center;
+      }
     }
 
     h1 {
@@ -33,10 +40,20 @@
       letter-spacing: 1%;
       text-transform: uppercase;
       font-weight: 800;
+
+      @media (max-width: 420px) {
+        font-size: 20px;
+      }
     }
 
     p {
       color: $logo-gray;
+      @media (max-width: 420px) {
+        font-size: 14px;
+      }
     }
+  }
+  @media (max-width: 420px) {
+    padding: 20px 0;
   }
 }
