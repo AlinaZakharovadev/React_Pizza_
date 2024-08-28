@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import styles from "./pizzaItemPage.module.scss";
+import {
+  container,
+  mainContent,
+  imageText,
+  desc,
+  main,
+  type,
+  btn_main,
+  btn,
+  info,
+} from "./pizzaItemPage.module.scss";
 import { Link } from "react-router-dom";
 
 function PizzaItemPage() {
@@ -38,14 +48,14 @@ function PizzaItemPage() {
     return <div>Error: {error}</div>;
   }
   return (
-    <div className={styles.container}>
-      <div className={styles.mainContent}>
-        <div className={styles.imageText}>
+    <div className={container}>
+      <div className={mainContent}>
+        <div className={imageText}>
           <img src={pizza.imageUrl} alt={pizza.title} />
           <h1>{pizza.title}</h1>
         </div>
-        <div className={styles.desc}>
-          <div className={styles.main}>
+        <div className={desc}>
+          <div className={main}>
             <p>
               Цена: <strong>{pizza.price}₽</strong>
             </p>
@@ -53,7 +63,7 @@ function PizzaItemPage() {
               Рейтинг: <strong>{pizza.rating} / 10</strong>
             </p>
           </div>
-          <div className={styles.info}>
+          <div className={info}>
             <h3>Размеры:</h3>
             <ul>
               {pizza.sizes.map((size, index) => (
@@ -61,7 +71,7 @@ function PizzaItemPage() {
               ))}
             </ul>
           </div>
-          <div className={styles.type}>
+          <div className={type}>
             <h3>Тесто:</h3>
             <ul>
               {pizza.types.map((type, index) => (
@@ -69,8 +79,8 @@ function PizzaItemPage() {
               ))}
             </ul>
           </div>
-          <div className={styles.btn_main}>
-            <Link to="/" className={styles.btn}>
+          <div className={btn_main}>
+            <Link to="/" className={btn}>
               <span>Вернуться назад</span>
             </Link>
           </div>

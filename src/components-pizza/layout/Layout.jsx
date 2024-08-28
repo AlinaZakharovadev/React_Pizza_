@@ -1,3 +1,4 @@
+import React from "react";
 import "../../scss/app.scss";
 import Header from "../../components-pizza/header/Header";
 import { Outlet } from "react-router-dom";

@@ -16,10 +16,10 @@ function Header() {
       <div className="container">
         <NavLink to="/" className="header__logo">
           <img
-            src="/img/pizza-logo.svg"
+            src="/img/pizza-logo.png"
             alt="Pizza logo"
-            width="38"
-            height="62"
+            width="55"
+            height="55"
           />
           <div>
             <h1>React Pizza</h1>
