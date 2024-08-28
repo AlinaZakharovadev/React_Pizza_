@@ -23,23 +23,15 @@
   &__logo {
     display: flex;
 
-    img {
-      margin-right: 15px;
-
-      @media (max-width: 420px) {
-        margin-right: 10px;
-        width: 35px;
-        height: 35px;
-        align-self: center;
-      }
-    }
-
     h1 {
       color: $logo;
       font-size: 24px;
-      letter-spacing: 1%;
       text-transform: uppercase;
       font-weight: 800;
+
+      @media (max-width: 501px) {
+        text-align: center;
+      }
 
       @media (max-width: 420px) {
         font-size: 20px;
