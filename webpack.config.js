@@ -7,7 +7,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"), // Выходная директория
     filename: "bundle.js", // Имя выходного файла
-    assetModuleFilename: "assets/[name][ext]", // Путь для всех статических ресурсов
   },
   module: {
     rules: [
@@ -35,7 +34,7 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: "img/[name].[ext]", // Specify output path and filename format
+              name: "img/[name].[ext]",
             },
           },
         ],
@@ -59,7 +58,7 @@ module.exports = {
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"), // Папка для обслуживания статических файлов
+      directory: path.join(__dirname, "public"), // Папка для обслуживания статических файлов
     },
     compress: true,
     port: 3000,
