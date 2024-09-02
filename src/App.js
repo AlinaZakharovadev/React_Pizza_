@@ -29,7 +29,7 @@ function App() {
         {
           path: "*",
           element: (
-            <Suspense fallback={<div>Идет загрузка...</div>}>
+            <Suspense fallback={<div>Идет загрузка..</div>}>
               <NotFound />
             </Suspense>
           ),
@@ -37,7 +37,7 @@ function App() {
         {
           path: "/cart",
           element: (
-            <Suspense fallback={<div>Идет загрузка...</div>}>
+            <Suspense fallback={<div>Идет загрузка..</div>}>
               <CartPage />
             </Suspense>
           ),
@@ -45,7 +45,7 @@ function App() {
         {
           path: "/pizza/:id",
           element: (
-            <Suspense fallback={<div>Идет загрузка...</div>}>
+            <Suspense fallback={<div>Идет загрузка..</div>}>
               <PizzaItemPage />
             </Suspense>
           ),
