@@ -40,6 +40,7 @@ function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
           alt={title}
           width="260"
           height="260"
+          loading="lazy"
         />
       </Link>
       <h4 className="pizza-block__title">{title}</h4>

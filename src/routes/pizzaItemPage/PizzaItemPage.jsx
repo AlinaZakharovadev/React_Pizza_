@@ -51,7 +51,7 @@ function PizzaItemPage() {
     <div className={container}>
       <div className={mainContent}>
         <div className={imageText}>
-          <img src={pizza.imageUrl} alt={pizza.title} />
+          <img src={pizza.imageUrl} alt={pizza.title} loading="lazy" />
           <h1>{pizza.title}</h1>
         </div>
         <div className={desc}>
