@@ -59,7 +59,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "styles.css",
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
   devServer: {
     static: {

@@ -1,9 +1,15 @@
 import React, { Suspense, lazy } from "react";
 import "./scss/app.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./components-pizza/layout/Layout";
-import PizzaHomePage from "./routes/homePage/PizzaHomePage";
 
+const Layout = lazy(() =>
+  import(/* webpackChunkName: "Layout" */ "./components-pizza/layout/Layout")
+);
+const PizzaHomePage = lazy(() =>
+  import(
+    /* webpackChunkName: "PizzaHomePage" */ "./routes/homePage/PizzaHomePage"
+  )
+);
 const NotFound = lazy(() =>
   import(/* webpackChunkName: "NotFound" */ "./routes/notfound/NotFound")
 );
@@ -16,38 +22,77 @@ const PizzaItemPage = lazy(() =>
   )
 );
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("Error caught in Error Boundary:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div>Произошла ошибка при загрузке.</div>;
+    }
+
+    return this.props.children;
+  }
+}
+
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: (
+        <ErrorBoundary>
+          <Layout />
+        </ErrorBoundary>
+      ),
       children: [
         {
           path: "/",
-          element: <PizzaHomePage />,
+          element: (
+            <ErrorBoundary>
+              <Suspense fallback={<div>Идет загрузка..</div>}>
+                <PizzaHomePage />
+              </Suspense>
+            </ErrorBoundary>
+          ),
         },
         {
           path: "*",
           element: (
-            <Suspense fallback={<div>Идет загрузка..</div>}>
-              <NotFound />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<div>Идет загрузка..</div>}>
+                <NotFound />
+              </Suspense>
+            </ErrorBoundary>
           ),
         },
         {
           path: "/cart",
           element: (
-            <Suspense fallback={<div>Идет загрузка..</div>}>
-              <CartPage />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<div>Идет загрузка..</div>}>
+                <CartPage />
+              </Suspense>
+            </ErrorBoundary>
           ),
         },
         {
           path: "/pizza/:id",
           element: (
-            <Suspense fallback={<div>Идет загрузка..</div>}>
-              <PizzaItemPage />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<div>Идет загрузка..</div>}>
+                <PizzaItemPage />
+              </Suspense>
+            </ErrorBoundary>
           ),
         },
       ],
