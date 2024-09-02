@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import {
   container,
   mainContent,
@@ -11,7 +13,6 @@ import {
   btn,
   info,
 } from "./pizzaItemPage.module.scss";
-import { Link } from "react-router-dom";
 
 function PizzaItemPage() {
   const { id } = useParams();
@@ -51,7 +52,7 @@ function PizzaItemPage() {
     <div className={container}>
       <div className={mainContent}>
         <div className={imageText}>
-          <img src={pizza.imageUrl} alt={pizza.title} loading="lazy" />
+          <img src={pizza.imageUrl} alt={pizza.title} />
           <h1>{pizza.title}</h1>
         </div>
         <div className={desc}>

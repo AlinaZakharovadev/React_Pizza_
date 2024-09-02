@@ -1,11 +1,20 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import "./scss/app.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import PizzaHomePage from "./routes/homePage/PizzaHomePage";
-import NotFound from "./routes/notfound/NotFound";
 import Layout from "./components-pizza/layout/Layout";
-import CartPage from "./routes/cart/CartPage";
-import PizzaItemPage from "./routes/pizzaItemPage/PizzaItemPage";
+import PizzaHomePage from "./routes/homePage/PizzaHomePage";
+
+const NotFound = lazy(() =>
+  import(/* webpackChunkName: "NotFound" */ "./routes/notfound/NotFound")
+);
+const CartPage = lazy(() =>
+  import(/* webpackChunkName: "CartPage" */ "./routes/cart/CartPage")
+);
+const PizzaItemPage = lazy(() =>
+  import(
+    /* webpackChunkName: "PizzaItemPage" */ "./routes/pizzaItemPage/PizzaItemPage"
+  )
+);
 
 function App() {
   const router = createBrowserRouter([
@@ -19,15 +28,27 @@ function App() {
         },
         {
           path: "*",
-          element: <NotFound />,
+          element: (
+            <Suspense fallback={<div>Идет загрузка...</div>}>
+              <NotFound />
+            </Suspense>
+          ),
         },
         {
           path: "/cart",
-          element: <CartPage />,
+          element: (
+            <Suspense fallback={<div>Идет загрузка...</div>}>
+              <CartPage />
+            </Suspense>
+          ),
         },
         {
           path: "/pizza/:id",
-          element: <PizzaItemPage />,
+          element: (
+            <Suspense fallback={<div>Идет загрузка...</div>}>
+              <PizzaItemPage />
+            </Suspense>
+          ),
         },
       ],
     },

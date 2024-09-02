@@ -1,12 +1,24 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
-  entry: "./src/index.js", // Входной файл
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "build"), // Выходная директория
-    filename: "bundle.js", // Имя выходного файла
+    path: path.resolve(__dirname, "build"),
+    filename: "[name].[contenthash].js",
+    chunkFilename: "[name].[contenthash].js",
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+    splitChunks: {
+      chunks: "all",
+    },
+    runtimeChunk: "single",
   },
   module: {
     rules: [
@@ -26,18 +38,14 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|jpeg|svg)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "img/[name].[ext]",
-            },
-          },
-        ],
+        type: "asset/resource",
+        generator: {
+          filename: "img/[name][ext]",
+        },
       },
       {
         test: /\.txt$/,
-        use: "raw-loader",
+        type: "asset/source",
       },
     ],
   },
@@ -51,6 +59,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "styles.css",
     }),
+    new BundleAnalyzerPlugin(),
   ],
   devServer: {
     static: {
